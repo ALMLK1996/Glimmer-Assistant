@@ -2,6 +2,18 @@
 
 <br/>
 
+<img src="docs/assets/glimmer-flame-mark.png" width="150" alt="Glimmer flame mark"/>
+
+<br/><br/>
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/glimmer-flame-definition-dark.png"/>
+  <source media="(prefers-color-scheme: light)" srcset="docs/assets/glimmer-flame-definition.png"/>
+  <img src="docs/assets/glimmer-flame-definition.png" width="640" alt="One little flame — a warmer kind of technology"/>
+</picture>
+
+<br/><br/>
+
 <table border="0" cellspacing="0" cellpadding="0" align="center">
   <tr>
     <td align="center" valign="middle">
