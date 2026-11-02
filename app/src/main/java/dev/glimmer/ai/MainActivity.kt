@@ -1,80 +1,83 @@
 package dev.glimmer.ai
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import dev.glimmer.ai.ui.home.GlimmerHomeScreen
 import dev.glimmer.ai.ui.onboarding.PermissionScreen
 import dev.glimmer.ai.ui.theme.GlimmerTheme
 import dev.glimmer.ai.util.PermissionUtils
 import dev.glimmer.overlay.LightBeingOverlayService
 
 class MainActivity : ComponentActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-
         setContent {
             GlimmerTheme {
-                Surface(modifier = Modifier.fillMaxSize()) {
-                    var overlayGranted by remember {
-                        mutableStateOf(PermissionUtils.canDrawOverlays(this))
-                    }
-                    var accessibilityEnabled by remember {
-                        mutableStateOf(PermissionUtils.isAccessibilityServiceEnabled(this))
-                    }
+                val context = LocalContext.current
+                val lifecycleOwner = LocalLifecycleOwner.current
+                var overlayGranted by remember { mutableStateOf(PermissionUtils.canDrawOverlays(context)) }
+                var overlayRunning by remember { mutableStateOf(false) }
 
-                    // Re-check when the user returns from Settings
-                    val lifecycleOwner = LocalLifecycleOwner.current
-                    LaunchedEffect(lifecycleOwner) {
-                        val observer = LifecycleEventObserver { _, event ->
-                            if (event == Lifecycle.Event.ON_RESUME) {
-                                overlayGranted = PermissionUtils.canDrawOverlays(this@MainActivity)
-                                accessibilityEnabled = PermissionUtils.isAccessibilityServiceEnabled(this@MainActivity)
-                            }
+                DisposableEffect(lifecycleOwner) {
+                    val observer = LifecycleEventObserver { _, event ->
+                        if (event == Lifecycle.Event.ON_RESUME) {
+                            overlayGranted = PermissionUtils.canDrawOverlays(context)
                         }
-                        lifecycleOwner.lifecycle.addObserver(observer)
                     }
+                    lifecycleOwner.lifecycle.addObserver(observer)
+                    onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
+                }
 
-                    if (overlayGranted && accessibilityEnabled) {
-                        // Permissions are ready — start the overlay service
-                        LaunchedEffect(Unit) {
-                            val intent = Intent(this@MainActivity, LightBeingOverlayService::class.java).apply {
-                                action = LightBeingOverlayService.ACTION_SHOW
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    if (!overlayGranted) {
+                        PermissionScreen(
+                            overlayGranted = false,
+                            accessibilityEnabled = true,
+                            onContinue = {
+                                startActivity(
+                                    Intent(
+                                        Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                                        Uri.parse("package:$packageName")
+                                    )
+                                )
                             }
-                            startForegroundService(intent)
-                        }
-
-                        // Temporary placeholder until a real home screen exists
-                        androidx.compose.material3.Text(
-                            text = "Glimmer is running.\nLight Being should now be able to appear.",
-                            style = MaterialTheme.typography.bodyLarge,
-                            modifier = Modifier.fillMaxSize()
                         )
                     } else {
-                        PermissionScreen(
-                            overlayGranted = overlayGranted,
-                            accessibilityEnabled = accessibilityEnabled,
-                            onContinue = {
-                                // Will only be enabled when both are granted
+                        GlimmerHomeScreen(
+                            overlayRunning = overlayRunning,
+                            onOverlayToggle = { enabled ->
                                 val intent = Intent(this@MainActivity, LightBeingOverlayService::class.java).apply {
-                                    action = LightBeingOverlayService.ACTION_SHOW
+                                    action = if (enabled) {
+                                        LightBeingOverlayService.ACTION_SHOW
+                                    } else {
+                                        LightBeingOverlayService.ACTION_STOP
+                                    }
                                 }
-                                startForegroundService(intent)
+                                if (enabled) startForegroundService(intent) else startService(intent)
+                                overlayRunning = enabled
+                            },
+                            onOpenSettings = {
+                                startActivity(Intent(Settings.ACTION_SETTINGS))
                             }
                         )
                     }
