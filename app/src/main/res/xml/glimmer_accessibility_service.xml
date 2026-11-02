@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
-    android:accessibilityEventTypes="typeViewClicked|typeViewLongClicked|typeViewScrolled|typeViewTextChanged|typeWindowStateChanged|typeWindowContentChanged|typeTouchInteractionStart"
+    android:accessibilityEventTypes="typeViewClicked|typeViewLongClicked|typeViewScrolled|typeWindowStateChanged|typeTouchInteractionStart"
     android:accessibilityFeedbackType="feedbackGeneric"
-    android:notificationTimeout="80"
+    android:notificationTimeout="250"
     android:canRetrieveWindowContent="false"
     android:description="@string/accessibility_service_description"
     android:settingsActivity="dev.glimmer.ai.MainActivity" />

@@ -3,10 +3,12 @@ package dev.glimmer.overlay
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.app.Service
 import android.content.Intent
 import android.graphics.PixelFormat
 import android.os.IBinder
+import android.provider.Settings
 import android.view.Gravity
 import android.view.WindowManager
 import androidx.compose.runtime.collectAsState
@@ -21,6 +23,7 @@ import androidx.savedstate.SavedStateRegistry
 import androidx.savedstate.SavedStateRegistryController
 import androidx.savedstate.SavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
+import dev.glimmer.ai.MainActivity
 import dev.glimmer.core.model.PresenceState
 import dev.glimmer.overlay.ui.LightBeingOverlayRoot
 import kotlinx.coroutines.CoroutineScope
@@ -68,7 +71,7 @@ class LightBeingOverlayService : Service(), LifecycleOwner, SavedStateRegistryOw
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         when (intent?.action) {
             ACTION_SHOW -> presenceController.onUserInteraction()
-            ACTION_HIDE, ACTION_USER_ACTIVE -> presenceController.forceHide()
+            ACTION_HIDE, ACTION_USER_ACTIVE -> presenceController.onUserBrowsing()
             ACTION_STOP -> {
                 presenceController.forceHide()
                 stopForeground(STOP_FOREGROUND_REMOVE)
@@ -80,12 +83,18 @@ class LightBeingOverlayService : Service(), LifecycleOwner, SavedStateRegistryOw
 
     private fun ensureOverlayVisible() {
         if (overlayView != null) return
+        if (!Settings.canDrawOverlays(this)) {
+            Timber.w("Overlay permission was revoked; hiding the companion")
+            presenceController.forceHide()
+            stopForeground(STOP_FOREGROUND_REMOVE)
+            stopSelf()
+            return
+        }
         val params = WindowManager.LayoutParams(
             WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.WRAP_CONTENT,
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
-            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
-                WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL,
             PixelFormat.TRANSLUCENT
         ).apply {
             gravity = Gravity.TOP or Gravity.START
@@ -107,9 +116,12 @@ class LightBeingOverlayService : Service(), LifecycleOwner, SavedStateRegistryOw
             windowManager?.addView(view, params)
             overlayView = view
             lifecycleRegistry.currentState = Lifecycle.State.RESUMED
-        } catch (e: Exception) {
-            Timber.e(e, "Could not attach the Glimmer overlay")
-            overlayView = null
+        } catch (exception: SecurityException) {
+            Timber.e(exception, "Overlay permission is unavailable")
+            presenceController.forceHide()
+        } catch (exception: WindowManager.BadTokenException) {
+            Timber.e(exception, "System rejected the overlay window")
+            presenceController.forceHide()
         }
     }
 
@@ -117,11 +129,12 @@ class LightBeingOverlayService : Service(), LifecycleOwner, SavedStateRegistryOw
         overlayView?.let { view ->
             try {
                 windowManager?.removeView(view)
-            } catch (e: Exception) {
-                Timber.w(e, "Overlay was already detached")
+            } catch (exception: IllegalArgumentException) {
+                Timber.w(exception, "Overlay was already detached")
+            } finally {
+                overlayView = null
             }
         }
-        overlayView = null
         if (lifecycleRegistry.currentState != Lifecycle.State.DESTROYED) {
             lifecycleRegistry.currentState = Lifecycle.State.STARTED
         }
@@ -129,17 +142,37 @@ class LightBeingOverlayService : Service(), LifecycleOwner, SavedStateRegistryOw
 
     private fun createNotificationChannel() {
         val channel = NotificationChannel(channelId, "Glimmer companion", NotificationManager.IMPORTANCE_LOW)
-            .apply { description = "Shown while the user-enabled companion overlay is active"; setShowBadge(false) }
+            .apply {
+                description = "Shown while the user-enabled companion overlay is active"
+                setShowBadge(false)
+            }
         getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
     }
 
-    private fun buildNotification(): Notification = NotificationCompat.Builder(this, channelId)
-        .setContentTitle("Glimmer is ready")
-        .setContentText("Tap Stop in the app to hide the companion")
-        .setSmallIcon(android.R.drawable.ic_menu_compass)
-        .setOngoing(true)
-        .setSilent(true)
-        .build()
+    private fun buildNotification(): Notification {
+        val stopIntent = Intent(this, LightBeingOverlayService::class.java).setAction(ACTION_STOP)
+        val stopPendingIntent = PendingIntent.getService(
+            this,
+            NOTIFICATION_ID,
+            stopIntent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+        val openIntent = PendingIntent.getActivity(
+            this,
+            NOTIFICATION_ID + 1,
+            Intent(this, MainActivity::class.java),
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+        )
+        return NotificationCompat.Builder(this, channelId)
+            .setContentTitle("Glimmer is ready")
+            .setContentText("Your floating companion is active")
+            .setSmallIcon(android.R.drawable.ic_menu_compass)
+            .setContentIntent(openIntent)
+            .addAction(android.R.drawable.ic_menu_close_clear_cancel, "Stop", stopPendingIntent)
+            .setOngoing(true)
+            .setSilent(true)
+            .build()
+    }
 
     override fun onDestroy() {
         presenceController.forceHide()

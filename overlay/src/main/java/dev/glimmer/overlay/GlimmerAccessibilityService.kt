@@ -6,47 +6,39 @@ import android.content.Intent
 import android.view.accessibility.AccessibilityEvent
 import timber.log.Timber
 
-/**
- * Observes system-wide interaction events so the Light Being
- * knows when to hide itself.
- */
+/** Optional, user-enabled coarse activity detection. No window text or hierarchy is retrieved. */
 class GlimmerAccessibilityService : AccessibilityService() {
 
     private var interactionTracker: AccessibilityInteractionTracker? = null
 
     override fun onServiceConnected() {
         super.onServiceConnected()
-
         serviceInfo = serviceInfo.apply {
             eventTypes = AccessibilityEvent.TYPE_VIEW_CLICKED or
                 AccessibilityEvent.TYPE_VIEW_LONG_CLICKED or
                 AccessibilityEvent.TYPE_VIEW_SCROLLED or
-                AccessibilityEvent.TYPE_VIEW_TEXT_CHANGED or
                 AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED or
-                AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED or
                 AccessibilityEvent.TYPE_TOUCH_INTERACTION_START
-
             feedbackType = AccessibilityServiceInfo.FEEDBACK_GENERIC
-            flags = AccessibilityServiceInfo.FLAG_REPORT_VIEW_IDS
-            notificationTimeout = 80
+            flags = 0
+            notificationTimeout = 250
         }
-
         interactionTracker = AccessibilityInteractionTracker(this).also { tracker ->
             tracker.start(object : InteractionTracker.Listener {
                 override fun onUserActive() {
-                    // Tell the overlay service the user is browsing again
                     val intent = Intent(this@GlimmerAccessibilityService, LightBeingOverlayService::class.java).apply {
                         action = LightBeingOverlayService.ACTION_USER_ACTIVE
                     }
-                    startService(intent)
+                    try {
+                        startService(intent)
+                    } catch (exception: IllegalStateException) {
+                        Timber.w(exception, "Overlay service is not available")
+                    }
                 }
 
-                override fun onUserIdle() {
-                    // Idle is currently handled by PresenceController timers
-                }
+                override fun onUserIdle() = Unit
             })
         }
-
         Timber.d("Glimmer accessibility service connected")
     }
 
