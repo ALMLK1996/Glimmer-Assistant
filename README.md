@@ -1,498 +1,359 @@
 <div align="center">
 
+<img src="docs/assets/glimmer-flame-creature.png" width="180" alt="Glimmer — a little flame creature"/>
 <br/>
-
-<img src="docs/assets/glimmer-flame-mark.png" width="150" alt="Glimmer flame mark"/>
-
-<br/><br/>
-
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/glimmer-flame-definition-dark.png"/>
-  <source media="(prefers-color-scheme: light)" srcset="docs/assets/glimmer-flame-definition.png"/>
-  <img src="docs/assets/glimmer-flame-definition.png" width="640" alt="One little flame — a warmer kind of technology"/>
+  <source media="(prefers-color-scheme: light)" srcset="docs/assets/glimmer-flame-definition-light.webp"/>
+  <img src="docs/assets/glimmer-flame-definition-light.webp" width="100%" alt="One little flame. A warmer kind of technology."/>
 </picture>
 
 <br/><br/>
 
-<table border="0" cellspacing="0" cellpadding="0" align="center">
-  <tr>
-    <td align="center" valign="middle">
-      <img src="docs/assets/glimmer-happy.png" width="180" alt="Glimmer — Happy State"/>
-    </td>
-    <td width="40"></td>
-    <td align="center" valign="middle">
-      <img src="docs/assets/glimmer-guardian.png" width="180" alt="Glimmer — Guardian State"/>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="3" align="center">
-      <sub><b>Companion States:</b> Ambient & responsive expressions that evolve with your workflow</sub>
-    </td>
-  </tr>
-</table>
+[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-4FC3F7?style=for-the-badge&logo=gnu&logoColor=white)](LICENSE)
+[![Android](https://img.shields.io/badge/Android-15%2B-69F0AE?style=for-the-badge&logo=android&logoColor=white)](https://developer.android.com)
+[![Windows](https://img.shields.io/badge/Windows-planned-0078D6?style=for-the-badge&logo=windows&logoColor=white)](#-platforms)
+[![Linux](https://img.shields.io/badge/Linux-planned-FCC624?style=for-the-badge&logo=linux&logoColor=black)](#-platforms)
+[![Status](https://img.shields.io/badge/Status-Early%20Development-FF6D00?style=for-the-badge)](#-project-status)
 
-<br/><br/>
+### *"Not just an AI assistant — a friend that lives on your screen."*
 
-# ✦ Glimmer AI
-
-### *"Not just an AI assistant — a living creature that resides inside your phone."*
-### *"ليس مساعداً ذكياً… بل كائن حي يعيش داخل هاتفك."*
-
-<br/>
-
-[![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-4FC3F7?style=for-the-badge&logo=gnu&logoColor=white)](LICENSE)
-[![Platform](https://img.shields.io/badge/Platform-Android%209%2B-69F0AE?style=for-the-badge&logo=android&logoColor=white)](https://developer.android.com)
-[![Privacy](https://img.shields.io/badge/Privacy-Zero%20Data%20Leaves%20Device-brightgreen?style=for-the-badge)](docs/PRIVACY.md)
-[![NGI Zero](https://img.shields.io/badge/Grant-NGI%20Zero%20Commons%20Fund-7C4DFF?style=for-the-badge)](grant/nlnet-proposal.md)
-[![F-Droid](https://img.shields.io/badge/F--Droid-Coming%20Soon-FF7043?style=for-the-badge&logo=fdroid&logoColor=white)](https://f-droid.org)
-[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-FFD54F?style=for-the-badge)](CONTRIBUTING.md)
-
-<br/>
-
-[**Overview**](#overview) · [**Features**](#-features) · [**Digital Soul**](#-digital-soul--your-phone-becomes-you) · [**Architecture**](#-architecture) · [**Getting Started**](#-getting-started) · [**GlimmerSoul**](#-glimmersoul-format) · [**Privacy**](#-privacy) · [**Contributing**](#-contributing) · [**Grant**](#-grant) · [**License**](#-license)
-
-<br/>
+[**Why**](#-why-glimmer-exists) · [**Status**](#-project-status) · [**Features**](#-features) · [**Companions**](#-companions) · [**Platforms**](#-platforms) · [**Architecture**](#️-architecture) · [**Getting Started**](#-getting-started) · [**GlimmerSoul**](#-glimmersoul-format) · [**Privacy**](#-privacy--safety) · [**Roadmap**](#️-roadmap) · [**Full plan**](ROADMAP.md) · [**Contributing**](#-contributing) · [**License**](#-license)
 
 </div>
 
 ---
 
-## Overview
+## ✨ What is Glimmer?
 
-**Glimmer** is an open-source, privacy-first **Ambient AI Companion Layer** for Android.
+Glimmer is an open-source **AI companion layer**. It is a small living flame, an animated creature that floats above your apps, talks with you in your own language, keeps you company, and does things for you: opening apps, searching, setting reminders, and automating routine tasks.
 
-It breaks the boundaries of conventional AI assistants by introducing a living, emotionally expressive digital entity — a rainbow ghost that floats above every app on your screen — that is simultaneously a powerful local AI assistant, a proactive context-aware intelligence, and a mirror of your own digital identity.
+You choose who lives on your screen: a calm sage, a playful trickster, a curious explorer, a gentle empath, and more. Anyone can build new companions with the open **GlimmerSoul** format.
 
-```
-┌──────────────────────────────────────────────────────────────────┐
-│  Traditional AI Assistant          │  Glimmer                    │
-│────────────────────────────────────│─────────────────────────────│
-│  Waits to be called                │  Lives with you, always     │
-│  Cloud-dependent                   │  100% on-device             │
-│  Extracts your data                │  Zero data transmission     │
-│  Generic personality               │  Mirrors your Digital Soul  │
-│  A tool                            │  A companion                │
-└──────────────────────────────────────────────────────────────────┘
-```
+Glimmer uses a **hybrid AI design**: small models run on your device for speed and everyday privacy, and a connected cloud service provides stronger reasoning, better translation and real-time information.
 
-> **Glimmer is not a product. It is digital infrastructure for human dignity.**
+---
+
+## 🚧 Project Status
+
+Glimmer is **in early development**, built by one developer in spare time. There is **no public release yet**. Everything below is labelled honestly:
+
+| Label | Meaning |
+|:--:|---|
+| 🚧 | In progress |
+| ⚪ | Planned |
+| 🔬 | Research: we want it, but it is not proven to be feasible yet |
+
+If you are a developer, designer, translator, accessibility expert or AI researcher and you like this idea, you are very welcome. See [Contributing](#-contributing).
+
+---
+
+## 🕊️ Why Glimmer Exists
+
+Many people now spend more time with screens than with other people. Children prefer games to playing outside, teenagers scroll instead of meeting, and chatting with an AI has become normal. Glimmer accepts that reality and tries to make the companion on the screen kinder, more useful and more respectful than what exists today.
+
+It is built with particular groups in mind, because mainstream apps often forget them:
+
+- People who live alone and want someone to talk to
+- Children who need a patient, safe way to learn and play
+- People with disabilities, who are still under-served by phone interfaces. The WHO estimates about 1.3 billion people live with a significant disability.
+- Migrants and language learners. The UN estimates about 281 million international migrants.
+- Anyone who wants a friendly, personal assistant instead of a cold one
+
+Glimmer is not a doctor, therapist or lawyer, and it never claims to be. See [Safety](#-privacy--safety).
 
 ---
 
 ## ✨ Features
 
-### 🌈 The Living Creature
-A glowing, animated ghost overlay that floats above every app on your Android screen.
-It breathes, reacts, and changes color based on device state and your emotional context.
+### Companion & personality
 
-| State      | Color        | Trigger                            |
-|------------|--------------|------------------------------------|
-| 😌 Calm    | 🔵 Blue      | Idle, resting                      |
-| 😄 Happy   | 🟡 Gold      | Task completed, positive input     |
-| ⚡ Working  | 🟢 Green     | Executing a task                   |
-| ⚠️ Alert   | 🟠 Orange    | Reminder, anomaly detected         |
-| 🔴 Danger  | 🔴 Red       | Malware found, critical event      |
-| 😴 Sleepy  | 🟣 Purple    | Device idle, night mode            |
+| Feature | Status |
+|---|:--:|
+| Animated flame companion that floats above your apps | 🚧 |
+| 9 built-in companions with distinct personalities | 🚧 |
+| GlimmerSoul: open format to create, share and export companions | 🚧 |
+| Friendly chat: banter, stories, games, bedtime stories | ⚪ |
+| Language practice in your target language, with gentle corrections | ⚪ |
+| 100+ languages with automatic detection (quality varies by language; best with cloud) | ⚪ |
+| Companion memory of your preferences, with a one-tap "forget" | ⚪ |
+
+### Getting things done
+
+| Feature | Status |
+|---|:--:|
+| Natural-language commands in many languages: "open Maps", "search for…", "set an alarm for 7" | ⚪ |
+| Reminders, calendar and daily routines, including habit and medication-time reminders (reminders only) | ⚪ |
+| Summaries of notifications and messages (opt-in; needs notification access) | ⚪ |
+| Task automation and multi-step routines | ⚪ |
+| Voice control and offline speech recognition (Whisper.cpp) | ⚪ |
+| Draft replies for you to approve before sending | ⚪ |
+| Phone tools on Android: duplicate photos, storage cleanup, permission audit | ⚪ |
+| Elevated actions through [Shizuku](https://shizuku.rikka.app/), no root needed | ⚪ |
+
+### Context & wellbeing
+
+| Feature | Status |
+|---|:--:|
+| Context-aware suggestions (time of day, calendar, battery, long sessions) | ⚪ |
+| Gentle check-ins, break reminders and late-night nudges | ⚪ |
+| Daily gratitude and kindness prompts | ⚪ |
+| Optional check-in summaries to trusted contacts, always visible to and controlled by the user | ⚪ |
+| User-triggered emergency button that shares location with trusted contacts | ⚪ |
+
+### Accessibility
+
+| Feature | Status |
+|---|:--:|
+| Full voice control and screen reading | ⚪ |
+| Large, simplified interface mode | ⚪ |
+| Sign-language input from the camera | 🔬 |
+
+### Culture, family & the world
+
+| Feature | Status |
+|---|:--:|
+| Heritage Keeper: record family stories, dialects and proverbs as an opt-in archive | ⚪ |
+| Pet and nature features: vet and feeding reminders, weather alerts, nature facts | ⚪ |
+| Eco habit tracking (water, movement, simple carbon estimates) | ⚪ |
+| Companion marketplace for community Souls | ⚪ |
+
+> **Not a medical device.** Glimmer does not diagnose, monitor health conditions, interpret symptoms or give medication advice. Reminder features only remind you of what *you* or your doctor decided.
 
 ---
 
-### 🧠 Local AI Core — Intelligence That Never Leaves Your Device
+## 👾 Companions
 
-Powered by open-weight models running entirely on-device via **llama.cpp** and **MLC-LLM**.
+Nine companions are planned for the first release. Each is a `.soul.json` file.
 
-| Device Class                    | Model              | Speed      | RAM      |
-|---------------------------------|--------------------|------------|----------|
-| Flagship (Snapdragon 8 Gen 3)   | Llama 3.2 3B Q4    | ~28 tok/s  | ~2.1 GB  |
-| Mid-range (Dimensity 7200)      | Phi-3 Mini Q4      | ~14 tok/s  | ~1.6 GB  |
-| Entry-level (4 GB RAM)          | Gemma-2 2B Q4      | ~8 tok/s   | ~1.2 GB  |
-| Offline-first fallback          | TinyLlama 1.1B Q4  | ~18 tok/s  | ~0.8 GB  |
+| Companion | Archetype | Speaks like | Best for |
+|---|---|---|---|
+| 🔵 **Nox** | The Wise Sage | Brief, precise | Focus, minimalists |
+| 🟣 **Zuri** | The Trickster | Sarcastic, playful | Gamers, social people |
+| 🟢 **Pip** | The Explorer | Excited, curious | Kids, creatives |
+| 🔴 **Kael** | The Warrior | Direct, no fluff | Productivity, athletes |
+| 🟡 **Luna** | The Empath | Soft, checks on you | Warm daily company |
+| 🌿 **Gaia** | The Earth Guardian | Gentle, poetic | Nature, eco habits |
+| ☀️ **Seraph** | The Child's Friend | Patient, playful | Children (with a parent or guardian) |
+| 🏛️ **Elder** | The Keeper of Memory | Warm, nostalgic | Stories, family memories |
+| 💊 **Dawa** | The Routine Helper | Calm, clear | Reminders and daily routines |
 
-- ✅ No API key required — ever
-- ✅ No internet connection needed for core features
-- ✅ Responds in under 2 seconds on mid-range devices
-- ✅ 40+ languages — fully offline
+Same request, different companions: *"Remind me about the meeting at 3pm"*
 
----
-
-### 🧬 Digital Soul — Your Phone Becomes You
-
-The defining feature of Glimmer: a **Digital Soul** system that learns your personality and optionally mirrors your avatar.
-
-**The onboarding flow:**
 ```
-Step 1  → Ghost creature appears with its default personality
-Step 2  → Glimmer introduces itself: "I'm Glimmer. Your phone, alive."
-Step 3  → "Would you like me to look like you?" — Yes / Later
-Step 4  → Avatar builder: choose face shape, color accent, accessories
-Step 5  → Over time, Glimmer learns your communication style, humor,
-           vocabulary, and habits — entirely on-device, AES-256 encrypted
+🔵 Nox    →  "Meeting. 3 PM. Set."
+🟣 Zuri   →  "Fine, I'll save you from forgetting again 😏 — done."
+🟢 Pip    →  "Ooh a meeting! Reminder set! Want one 15 mins early too?!"
+🟡 Luna   →  "Of course ❤️ — I'll remind you gently."
 ```
 
-- 📦 **Export** your Soul as a portable `.soul.json` file
-- 📱 **Transfer** to any new device — your companion never dies
-- 🌍 **Share** Souls with the community (CC0 format)
-
-> The **GlimmerSoul** is an open **CC0 format** — anyone can create, share, and publish personalities.
+Anyone can add companions: see [GlimmerSoul](#-glimmersoul-format).
 
 ---
 
-### ⚡ Ambient Intelligence — Proactive, Not Reactive
+## 💻 Platforms
 
-Glimmer reads contextual signals continuously — no wake word needed:
-
-```
-Calendar state        →  "You have a meeting in 12 minutes"
-Notification patterns →  "You have 47 unread — want a summary?"
-Typing rhythm         →  Detects stress and slows down
-Battery level         →  "20% left, want me to enable battery saver?"
-Time of day           →  Adapts tone and energy automatically
-```
-
----
-
-### 💬 Natural Language Task Execution
-
-```
-"Set an alarm for 7am"           → AlarmManager
-"Send a message to Ahmed"        → SmsManager / Intent
-"What's on my calendar today?"   → CalendarProvider
-"Read my notifications"          → NotificationListenerService
-"Summarize my last email"        → Local LLM + MailProvider
-"Find duplicate photos"          → Perceptual hash scanner
-"Scan for malware"               → Embedded ClamAV engine
-```
-
----
-
-### ❤️ Emotional Awareness — On-Device, Privacy-Preserving
-
-Glimmer infers emotional state from behavioral signals **already on the device**:
-
-- Typing speed and pressure variation
-- App-switching frequency
-- Notification response latency
-- Voice prosody during commands
-
-**No camera. No biometric data. EU AI Act compliant.**
-Achieves 75–82% detection accuracy — zero bytes transmitted externally.
-
----
-
-### 🛡️ Digital Wellbeing Guardian
-
-Monitors and gently intervenes against:
-- Notification overload
-- Doom-scrolling patterns
-- Sleep disruption cycles
-- App addiction signals
-
-Intervention style: **presence and gentle redirection** — never punishment or blocking.
-
----
-
-### 🔧 System Intelligence
-
-| Tool                      | Method                     | Cloud Required |
-|---------------------------|----------------------------|:--------------:|
-| Duplicate photo detection | Perceptual hashing (pHash) | ✗              |
-| Malware scanning          | Embedded ClamAV engine     | ✗              |
-| Battery health monitoring | Android BatteryManager     | ✗              |
-| Permission auditing       | PackageManager inspection  | ✗              |
-| Junk file cleanup         | Storage API + heuristics   | ✗              |
-
----
-
-### 🌍 Open Personality Ecosystem
-
-The **GlimmerSoul** community format enables anyone to publish:
-
-| Soul Type               | Example                                      |
-|-------------------------|----------------------------------------------|
-| 🌙 Arabic cultural Soul | Warm, humorous, tuned for Arab communication |
-| 🧘 Mindfulness Soul     | Calm, meditative, therapist-designed         |
-| 🔮 Developer Soul       | Sharp, precise, loves code                   |
-| 📚 Education Soul       | Patient, encouraging, for children           |
-| 🎮 Gaming Soul          | Energetic, competitive, reaction-fast        |
-
-See the [`souls/`](souls/) directory for available community packs.
+| Platform | Status | Notes |
+|---|:--:|---|
+| **Android 15+** | 🚧 | Primary platform: overlay companion, tasks, voice |
+| **Windows** | ⚪ | Companion on the desktop plus PC control and automation |
+| **Linux** | ⚪ | Same as Windows, starting with common desktop environments |
+| **iOS / macOS** | ⚪ Later | After Android, Windows and Linux. Apple platforms restrict floating overlays and background access, so the experience will differ. |
 
 ---
 
 ## 🏗️ Architecture
 
+Glimmer is a **hybrid** system:
+
+```
+┌─────────────────────────── Your device ───────────────────────────┐
+│  Companion UI · Soul engine · Task router · Local memory (encrypted) │
+│  Small local models: quick chat, language detection, speech (STT)   │
+└───────────────┬───────────────────────────────────────────────────┘
+                │  TLS 1.3 · only what each feature needs
+┌───────────────▼───────────────────────────────────────────────────┐
+│  Cloud service: stronger reasoning, translation, live information,   │
+│  optional sync of your companion between devices                     │
+└────────────────────────────────────────────────────────────────────┘
+```
+
+- **Local first for simple things.** Quick replies, commands and language detection use on-device models.
+- **Cloud for hard things.** Complex reasoning, high-quality translation and sync use the cloud.
+- **Model size follows your device.** Glimmer picks a local model that fits your RAM. Real benchmarks will be published once measured on actual devices.
+
+### Repository layout
+
 ```
 glimmer/
-├── app/
-│   └── src/main/kotlin/com/glimmer/
-│       ├── core/              # DI (Koin/Hilt), shared utilities, theme base
-│       ├── overlay/           # Ghost overlay & WindowManager system
-│       │   ├── GlimmerView.kt
-│       │   ├── EmotionState.kt
-│       │   └── FloatingService.kt
-│       ├── ai/                # Local LLM core (llama.cpp / MLC-LLM)
-│       │   ├── LocalAI.kt
-│       │   ├── NLUEngine.kt
-│       │   └── ModelManager.kt
-│       ├── soul/              # Digital Soul system
-│       │   ├── GlimmerSoul.kt
-│       │   ├── PersonalityEngine.kt
-│       │   └── AvatarBuilder.kt
-│       ├── tasks/             # Task execution engine
-│       │   ├── AlarmTask.kt
-│       │   ├── MessageTask.kt
-│       │   └── TaskRouter.kt
-│       ├── ambient/           # Context awareness engine
-│       │   ├── AmbientEngine.kt
-│       │   └── WellbeingGuard.kt
-│       ├── memory/            # Long-term memory (Room + AES-256)
-│       │   ├── MemoryStore.kt
-│       │   └── HabitModel.kt
-│       ├── plugins/           # Extensible plugin interface
-│       │   └── PluginRegistry.kt
-│       └── system/            # System intelligence tools
-│           ├── FileScanner.kt
-│           ├── DuplicateFinder.kt
-│           └── MalwareScanner.kt
-├── docs/
-│   ├── ARCHITECTURE.md        # Full subsystem data flows
-│   ├── GLIMMERSOUL_FORMAT.md  # Soul format specification
-│   ├── PLUGIN_API.md          # Developer guide for plugins
-│   └── PRIVACY.md             # Privacy-by-design proof
-├── souls/                     # Community GlimmerSoul packs (CC0)
-│   ├── default.soul.json
-│   └── README.md
-├── skins/                     # Visual asset packages
-│   ├── default/
-│   └── spec.md
-├── grant/
-│   └── nlnet-proposal.md      # NGI Zero Commons Fund application
-├── demo/
-│   └── index.html             # Interactive web demo
-├── .github/
-│   ├── ISSUE_TEMPLATE/
-│   │   ├── bug_report.md
-│   │   └── feature_request.md
-│   └── workflows/
-│       ├── build.yml          # CI — automated build checks
-│       └── release.yml        # CD — reproducible APK signing
-├── CONTRIBUTING.md
-├── SECURITY.md
-├── CODE_OF_CONDUCT.md
-├── CHANGELOG.md
-├── LICENSE
-└── .gitignore
+├── android/      # Kotlin app (overlay, tasks, voice)
+├── desktop/      # Windows & Linux app (planned)
+├── shared/       # AI bindings (llama.cpp, Whisper.cpp), Soul parser, language detection
+├── souls/        # Built-in and community companions
+├── docs/         # Architecture, plugin API, Soul format, privacy
+└── skins/
 ```
 
-### Tech Stack
+### Tech stack
 
-| Layer                 | Technology                                           |
-|-----------------------|------------------------------------------------------|
-| **Language**          | 100% Kotlin                                          |
-| **UI Framework**      | Jetpack Compose + Custom Canvas rendering            |
-| **Window System**     | Android WindowManager (persistent overlay)           |
-| **Local AI**          | llama.cpp · MLC-LLM · ONNX Runtime                  |
-| **Speech**            | Whisper.cpp (on-device ASR, no cloud)                |
-| **Emotion Inference** | TensorFlow Lite / ONNX — behavioral signals only     |
-| **Data Persistence**  | Room Database + AES-256 + Android Keystore           |
-| **Background Tasks**  | WorkManager + AlarmManager                           |
-| **Malware Scanning**  | ClamAV (embedded open-source engine)                 |
-| **Soul Format**       | GlimmerSoul JSON (CC0 open standard)                 |
-
-For full architectural diagrams and data flows, see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
+| Layer | Android | Desktop (Windows / Linux) |
+|---|---|---|
+| Language | Kotlin · C++ (NDK) | To be decided |
+| UI | Jetpack Compose + custom Canvas | Transparent always-on-top window |
+| Local AI | llama.cpp · ONNX Runtime | llama.cpp |
+| Speech | Whisper.cpp | Whisper.cpp |
+| Storage | Room + AES-256 + Android Keystore | Encrypted local store |
+| Background | WorkManager + AlarmManager | System service / tray |
+| System access | Shizuku (optional) | OS automation APIs |
 
 ---
 
 ## 🚀 Getting Started
 
-### Prerequisites
+### Android (current development target)
 
-- Android Studio Jellyfish or newer
-- Android SDK 34+
-- JDK 17+
-- Android device or emulator — Android 9+ (API 28+)
-
-### Build & Run
+Prerequisites: Android Studio Jellyfish or newer · Android SDK 35+ · JDK 17+ · a device or emulator with Android 15+.
 
 ```bash
-# 1. Clone
 git clone https://github.com/glimmer-ai/glimmer.git
-cd glimmer
-
-# 2. Open in Android Studio → File → Open → select glimmer/
-
-# 3. Sync Gradle, then build
+cd glimmer/android
 ./gradlew assembleDebug
-
-# 4. Install on connected device
 ./gradlew installDebug
 ```
 
-### First Launch
+First launch:
 
-1. Grant `SYSTEM_ALERT_WINDOW` permission when prompted
-2. Tap **Summon Glimmer** — the ghost appears on your screen
-3. Glimmer asks: *"Would you like to download a local AI model?"*
-4. Recommended first model: **TinyLlama 1.1B Q4** (~600 MB, works on all devices)
+1. Grant the overlay permission (`SYSTEM_ALERT_WINDOW`) when prompted.
+2. Complete the **Privacy Setup** and choose what Glimmer may access and what may use the cloud.
+3. Tap **Summon Glimmer** and pick a companion.
+4. Optionally enable [Shizuku](https://shizuku.rikka.app/) for system features.
+
+Windows and Linux builds will be documented when they exist.
 
 ---
 
 ## 🧬 GlimmerSoul Format
 
-The **GlimmerSoul** is an open **CC0** format. Anyone can author and publish one.
+A **GlimmerSoul** is a small JSON file that describes a companion. The format is open (**CC0**) so anyone can create and share companions.
 
 ```json
 {
   "version": "1.0",
-  "name": "My Glimmer",
-  "author": "optional",
-  "language": "en",
-  "avatar": {
-    "shape": "ghost",
-    "colorPrimary": "#4FC3F7",
-    "colorScheme": "rainbow",
-    "accessories": []
-  },
-  "personality": {
-    "humor":     0.8,
-    "warmth":    0.9,
-    "energy":    0.7,
-    "formality": 0.3
-  },
-  "emotions": {
-    "happy":   "#FFD54F",
-    "working": "#69F0AE",
-    "alert":   "#FF7043",
-    "calm":    "#4FC3F7",
-    "sleepy":  "#7C4DFF",
-    "danger":  "#F44336"
-  },
+  "id": "luna",
+  "name": "Luna",
+  "archetype": "The Empath",
+  "author": "Glimmer Core Team",
+  "license": "CC0-1.0",
+  "language": "auto",
+  "avatar": { "shape": "flame", "colorPrimary": "#FFD54F" },
+  "personality": { "humor": 0.5, "warmth": 1.0, "energy": 0.6, "formality": 0.2 },
+  "skills": { "task_execution": 0.7, "emotional_support": 1.0, "ambient_awareness": 0.9 },
+  "special_skill": { "id": "checkin_mode", "name": "Check-in Mode" },
   "responses": {
-    "greeting": ["Hey!", "Hello there!", "What's up?"],
-    "taskDone": ["Done!", "Got it!", "All set!"],
-    "error":    ["Hmm, let me try again.", "Something went wrong."]
+    "greeting": { "en": ["Hi there ❤️"], "ar": ["أهلاً بك ❤️"], "fallback": ["❤️"] }
   }
 }
 ```
 
-**Publishing your Soul:**
-1. Create your `.soul.json` following [docs/GLIMMERSOUL_FORMAT.md](docs/GLIMMERSOUL_FORMAT.md)
-2. Open a PR adding it to the [`souls/`](souls/) directory
-3. License must be CC BY-SA 4.0 or more permissive
+A Soul can define personality, skill weights, voice and vocabulary, a special mode, visual identity, multilingual responses and content filters for its intended audience.
+
+To publish yours: follow [docs/GLIMMERSOUL_FORMAT.md](docs/GLIMMERSOUL_FORMAT.md) and open a PR to [`souls/`](souls/).
 
 ---
 
-## 🔒 Privacy
+## 🔒 Privacy & Safety
 
-Glimmer's privacy guarantees are **architectural** — enforced in code, not policy.
+Because Glimmer connects to a cloud service, here is exactly what that means.
 
-| Guarantee                            | How it is enforced                                  |
-|--------------------------------------|-----------------------------------------------------|
-| No network for core features         | No `INTERNET` permission in offline build           |
-| All AI inference on-device           | llama.cpp / MLC-LLM — local only                   |
-| Soul encrypted at rest               | AES-256 + Android Keystore                         |
-| Full data portability                | Export all data as open JSON at any time            |
-| Reproducible builds                  | Verify APK against source — documented process      |
-| EU AI Act compliant                  | Behavioral signals only — no biometric data         |
-| No analytics without consent         | Opt-in only, fully revocable                        |
+### What we commit to
 
-Full details: [docs/PRIVACY.md](docs/PRIVACY.md)
+- **No selling of personal data.** This is a project policy and commitment. (Note that the open-source license alone does not enforce it.)
+- **Data minimization:** each feature sends only what it needs.
+- **Encryption:** TLS 1.3 in transit; AES-256 for data stored on your device.
+- **Control:** see what is stored, export it in an open format, and delete it all with one action.
+- **Granular consent:** cloud features, memory, sync and the Heritage archive are separate opt-ins you can revoke.
+- **Open source:** the code can be audited, and modified network versions must publish their source (AGPL-3.0).
 
----
+### Consent levels
 
-## ⚖️ Comparison
+| Level | Examples | Can be disabled? |
+|---|---|:--:|
+| Essential | Core on-device AI, UI | Required |
+| Optional | Conversation memory, personalization | Yes |
+| Cloud | Cloud AI, translation, sync, Heritage archive | Yes, per feature |
+| Experimental | Beta features, research participation | Yes, off by default |
 
-| Feature                   | Google Assistant | Replika | Character.AI | Fuzozo (CES 2026) | ✦ Glimmer  |
-|---------------------------|:----------------:|:-------:|:------------:|:-----------------:|:----------:|
-| Open Source               | ✗ | ✗ | ✗ | ✗ | **✓** |
-| Fully Local / Offline     | ✗ | ✗ | ✗ | Partial | **✓** |
-| Animated Ghost Creature   | ✗ | Partial | Partial | ✓ | **✓** |
-| Digital Soul / Avatar     | ✗ | Partial | Partial | ✗ | **✓** |
-| Device Task Execution     | ✓ | ✗ | ✗ | ✗ | **✓** |
-| Ambient Intelligence      | Partial | ✗ | ✗ | ✗ | **✓** |
-| Emotional Awareness       | ✗ | ✓ | Partial | ✓ | **✓** |
-| Digital Wellbeing         | Partial | ✗ | ✗ | ✗ | **✓** |
-| System Maintenance        | ✗ | ✗ | ✗ | ✗ | **✓** |
-| Soul Portability          | ✗ | ✗ | ✗ | ✗ | **✓** |
-| Community Souls / Skins   | ✗ | ✗ | Partial | ✗ | **✓** |
-| Works on €80 Android      | Partial | ✓ | ✓ | ✗ | **✓** |
-| F-Droid / No Play Store   | ✗ | ✗ | ✗ | N/A | **✓** |
+### Safety boundaries
 
----
+- **No medical functions.** Glimmer is not a medical device and does not give diagnoses, symptom interpretation or medication advice.
+- **Emergencies.** Glimmer is not an emergency service. The emergency button only shares your location with contacts *you* chose.
+- **Children.** Seraph and child modes are designed to be used with a parent or guardian. Content filters are a design goal, not a guarantee.
+- **Real life matters.** Glimmer can be your friend on the screen, and it will not guilt you for leaving, will not try to keep you engaged, and will remind you to take breaks.
 
-## 🤝 Contributing
+### Legal status
 
-We welcome contributions of all kinds.
+Glimmer is **designed around GDPR-style principles** and aims to follow privacy laws such as GDPR, CCPA, LGPD, PIPL, DPDP, PDPL and KVKK. **No independent legal audit has been carried out yet.** One is planned before any public release, and the project will not claim compliance until it has been reviewed. When required by law, Glimmer will cooperate with authorities in the minimum way the law requires and will publish transparency reports.
 
-```
-🐛  Bug report         → .github/ISSUE_TEMPLATE/bug_report.md
-💡  Feature request    → .github/ISSUE_TEMPLATE/feature_request.md
-🌍  Translation        → app/src/main/res/values-*/strings.xml
-🧬  Publish a Soul     → souls/README.md
-🔌  Build a plugin     → docs/PLUGIN_API.md
-📖  Improve docs       → docs/
-```
-
-Read [CONTRIBUTING.md](CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) before opening a PR.
-
-**Code standards:**
-- Kotlin style via `ktlint`
-- All new features must include unit tests
-- No analytics or telemetry code accepted
-- Privacy review required for any new data access
+An independent oversight board is a long-term goal, not an existing body.
 
 ---
 
 ## 🗺️ Roadmap
 
+No dates are promised. This is one developer's plan, in order.
+
 ```
-Phase 1 — The Soul      (M1–M2)   Ghost creature · GlimmerSoul v1.0 · Public release
-Phase 2 — The Mind      (M2–M4)   Local LLM core · Task execution · Digital Soul
-Phase 3 — The Senses    (M4–M6)   Ambient intelligence · Emotional awareness · Wellbeing
-Phase 4 — The Body      (M6–M8)   System intelligence · Plugin API v1.0 · Security audit
-Phase 5 — The Community (M9–M12)  F-Droid · Soul ecosystem · v1.0 stable release
+1. Foundation   Android overlay companion · 9 Souls · GlimmerSoul v1 · basic chat
+2. Mind         Hybrid AI (local + cloud) · language detection · more languages
+3. Hands        Commands, reminders, calendar, app control, automation · voice
+4. Awareness    Context suggestions · wellbeing check-ins · notification summaries
+5. Desktop      Windows and Linux companion · PC automation
+6. Trust        Privacy Center · consent log · security review · legal review · first public release
+7. Community    Soul marketplace · plugin API · translations
+8. Humanity     Heritage Keeper · accessibility audit · NGO and school partnerships
+9. More         iOS and macOS · wearables
 ```
 
 ---
 
-## 🏛️ Grant
+## 🤝 Contributing
 
-Glimmer is an applicant to the **NGI Zero Commons Fund** — [NLnet Foundation](https://nlnet.nl/commonsfund), Thirteenth Call, 2026.
+```
+🐛  Bug report       → .github/ISSUE_TEMPLATE/bug_report.md
+💡  Feature request  → .github/ISSUE_TEMPLATE/feature_request.md
+🌍  Translation      → android/app/src/main/res/values-*/strings.xml
+🧬  Publish a Soul   → souls/README.md
+🔌  Build a plugin   → docs/PLUGIN_API.md
+🖥️  Desktop help     → Windows and Linux builds (planned)
+```
 
-> Advancing the Next Generation Internet by proving that privacy-preserving AI is not only technically viable on consumer hardware — but more desirable than surveillance-based alternatives.
+We especially welcome contributors who speak under-represented languages, work in accessibility, healthcare, education or humanitarian fields, or have felt left out by technology.
 
-- **Requested:** €35,000
-- **Duration:** 12 months
-- **Distribution:** F-Droid (primary) · GitHub Releases (reproducible APK)
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) first.
 
-Full proposal: [`grant/nlnet-proposal.md`](grant/nlnet-proposal.md)
+**Code standards:** `ktlint` (Kotlin) · LLVM style (C++) · unit tests for new features · no third-party analytics · privacy review for any new data access.
 
 ---
 
 ## 📄 License
 
-| Component               | License                                    |
-|-------------------------|--------------------------------------------|
-| Application source code | [GPL-3.0](LICENSE)                         |
-| GlimmerSoul format spec | [CC0 1.0 Public Domain](souls/LICENSE)     |
-| Visual assets           | [CC BY-SA 4.0](docs/assets/LICENSE)        |
-| Documentation           | [CC BY 4.0](docs/LICENSE)                  |
+| Component | License |
+|---|---|
+| Application source code | [AGPL-3.0](LICENSE) |
+| GlimmerSoul format spec | [CC0 1.0](souls/LICENSE) |
+| Visual assets | [CC BY-SA 4.0](docs/assets/LICENSE) |
+| Documentation | [CC BY 4.0](docs/LICENSE) |
 
-Glimmer is free software. You are free to use, study, modify, and distribute it under the terms of the GPL-3.0.
+**Why AGPL-3.0?** Anyone who modifies Glimmer and offers it as a network service must publish their changes. The project stays open.
+
+**Original author & copyright holder:** Abdulhannan Abdulkerim · [@ALMLK1996](https://github.com/ALMLK1996)
 
 ---
 
 <div align="center">
 
-<br/>
+**✦ Glimmer — one little flame. A warmer kind of technology.**
 
-**✦ Glimmer — Your phone, alive.**
-
-*Built with ❤️ and zero surveillance*
-
-<br/>
-
-[![Star on GitHub](https://img.shields.io/github/stars/glimmer-ai/glimmer?style=social)](https://github.com/glimmer-ai/glimmer)
-
-<br/>
+*Built with ❤️ by one developer, and hopefully soon by many.*
 
 </div>
